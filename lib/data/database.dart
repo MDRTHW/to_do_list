@@ -9,8 +9,9 @@ class ToDoDatabase{
   //run this method if the 1st time the app is opened
   void createInitialData(){
     toDoList = [
-      ['Buy Milk', false],
-      ['Buy Eggs', false],
+      ['Buy Milk', false,  'xx/xx/xxxx'],
+      ['Buy Eggs', false, 'xx/xx/xxxx'],
+      ['Buy Bread', false, 'xx/xx/xxxx'],
     ];
   }
 

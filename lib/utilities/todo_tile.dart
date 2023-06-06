@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoTile extends StatelessWidget {
 
+  final String dateTime;
   final String taskName;
   final bool taskCompleted;
   Function(bool?)? onChanged;
@@ -13,8 +14,10 @@ class ToDoTile extends StatelessWidget {
      Key? key,
      required this.taskName,
      required this.taskCompleted,
+     required this.dateTime,
      this.onChanged,
-     required this.deleteFunction
+     required this.deleteFunction,
+
    }) : super(key: key );
 
   @override
@@ -34,23 +37,37 @@ class ToDoTile extends StatelessWidget {
           ],
         ),
         child: Container(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 10.0, bottom: 10.0),
-            child: Row(
+          padding: const EdgeInsets.only(left: 24.0, right: 24.0,top: 3, bottom: 10.0),
+            child: Column(
               children: [
-                //chjeckbox
-                Checkbox(
-                  value: taskCompleted,
-                  onChanged: onChanged,
-                  activeColor: Colors.black,
-                ),
-
-                //task name
-                Text(
-                  taskName,
-                  style:
-                  TextStyle(
-                    decoration: taskCompleted ? TextDecoration.lineThrough: TextDecoration.none,
+                Container(
+                  alignment: Alignment.centerRight,
+                  // height: 10,
+                  // color: Colors.white,
+                  child: Text(dateTime,
+                    style: TextStyle(
+                      fontSize: 10,
+                    ),
                   ),
+                ),
+                Row(
+                  children: [
+                    //chjeckbox
+                    Checkbox(
+                      value: taskCompleted,
+                      onChanged: onChanged,
+                      activeColor: Colors.black,
+                    ),
+
+                    //task name
+                    Text(
+                      taskName,
+                      style:
+                      TextStyle(
+                        decoration: taskCompleted ? TextDecoration.lineThrough: TextDecoration.none,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

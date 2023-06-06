@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import 'package:to_do/utilities/dialog_box.dart';
 import 'package:to_do/utilities/todo_tile.dart';
 
@@ -48,8 +49,11 @@ class _HomePageState extends State<HomePage> {
 
   //save new task
   void saveNewTask(){
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat.yMMMEd().format(now);
     setState(() {
-      db.toDoList.add([_controller.text, false]);
+
+      db.toDoList.add([_controller.text, false,formattedDate]);
       _controller.clear();
     });
     db.updateDatabase();
@@ -98,11 +102,12 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.yellow,
       ),
       body: ListView.builder(
-        itemCount: db.toDoList.length,
+          itemCount: db.toDoList.length,
           itemBuilder: (context,index){
           return ToDoTile(
             taskName: db.toDoList[index][0],
             taskCompleted: db.toDoList[index][1],
+            dateTime: db.toDoList[index][2],
             onChanged: (value) => checkBoxChnaged(value, index),
             deleteFunction: (context) => deleteTask(index),
           );
