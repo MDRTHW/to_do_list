@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do/utilities/dialog_box.dart';
 import 'package:to_do/utilities/todo_tile.dart';
-
 import '../data/database.dart';
 
 class HomePage extends StatefulWidget {

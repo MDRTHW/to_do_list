@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:to_do/pages/home_page.dart';
+import 'package:to_do/pages/loading_screen.dart';
 
 void main() async{
   //init hive
@@ -25,7 +26,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: HomePage() ,
+     initialRoute: '/loading',
+      routes: {
+        '/home': (context) => HomePage(),
+        '/loading': (context) => LoadingScreen(),
+      },
+     //  home: LoadingScreen(),
     );
   }
 }
